@@ -1,49 +1,9 @@
 "use client";
-
-import type { SliderProps } from "@heroui/react";
-// import type { RangeFilter, RangeValue } from "./filters-types";
-
 import React from "react";
 import { Divider, Input, Slider } from "@heroui/react";
 import { cn } from "@heroui/react";
-
-export type PriceSliderAnimation = "opacity" | "height";
-export type RangeValue = [number, number];
-export type RangeFilter = {
-  min: number;
-  max: number;
-  step: number;
-  defaultValue: RangeValue;
-};
-
-export type PriceSliderProps = Omit<SliderProps, "ref"> & {
-  range?: RangeFilter;
-  animation?: PriceSliderAnimation;
-};
-
-function clampValue(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
-}
-
-function scaleValue(
-  value: number,
-  fromRange: RangeValue,
-  toRange: RangeValue = [0, 100]
-) {
-  const [fromMin, fromMax] = fromRange;
-  const [toMin, toMax] = toRange;
-
-  // Scaling factor to map the value from one range to another
-  const scale = (toMax - toMin) / (fromMax - fromMin);
-
-  // Applying the scaling factor to the value and adjusting by the minimum of the target range
-  return (value - fromMin) * scale + toMin;
-}
-
-export type PriceSliderPipProps = {
-  isInRange: boolean;
-  animation?: PriceSliderAnimation;
-};
+import { RangeValue, PriceSliderProps, PriceSliderPipProps } from "../types";
+import { clampValue, scaleValue } from "../utils";
 
 const PriceSliderPip: React.FC<PriceSliderPipProps> = ({
   animation = "height",

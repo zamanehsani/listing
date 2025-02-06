@@ -1,18 +1,9 @@
 "use client";
-
 import React from "react";
 import { Button, Image } from "@heroui/react";
 import { cn } from "@heroui/react";
-import { productType } from "../types";
+import { ProductListItemProps } from "../types";
 import { Icon } from "@iconify/react";
-
-export type ProductListItemProps = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  "id"
-> & {
-  isPopular?: boolean;
-  removeWrapper?: boolean;
-} & productType;
 
 const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
   (

@@ -15,7 +15,6 @@ export default function Home() {
           <FiltersWrapper
             className="bg-default-50"
             scrollShadowClassName="max-h-full pb-12"
-            showActions={true}
           />
         </SidebarDrawer>
 

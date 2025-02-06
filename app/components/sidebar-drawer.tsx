@@ -1,6 +1,5 @@
 "use client";
 import type { ModalProps } from "@heroui/react";
-
 import React from "react";
 import { TRANSITION_EASINGS } from "@heroui/framer-utils";
 import { Modal, ModalBody, ModalContent } from "@heroui/react";

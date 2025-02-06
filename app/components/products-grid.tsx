@@ -3,12 +3,9 @@ import React, { useState, useEffect } from "react";
 import { cn } from "@heroui/react";
 import ProductListItem from "./product-list-item";
 import { fetchData } from "../utils";
-import { productType } from "../types";
+import { productType, ProductGridProps } from "../types";
 import { notFound } from "next/navigation";
 import Skaleton from "./skaleton";
-export type ProductGridProps = React.HTMLAttributes<HTMLDivElement> & {
-  itemClassName?: string;
-};
 
 const ProductsGrid = React.forwardRef<HTMLDivElement, ProductGridProps>(
   ({ itemClassName, className, ...props }, ref) => {

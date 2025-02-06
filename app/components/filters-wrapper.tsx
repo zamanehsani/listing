@@ -2,27 +2,18 @@
 
 import React from "react";
 import {
-  Accordion,
-  AccordionItem,
   Button,
   Checkbox,
   CheckboxGroup,
   Divider,
-  ScrollShadow,
   Spacer,
 } from "@heroui/react";
 import { cn } from "@heroui/react";
 import PriceSlider from "./price-slider";
-
-export type FiltersWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
-  showTitle?: boolean;
-  showActions?: boolean;
-  className?: string;
-  scrollShadowClassName?: string;
-};
+import { FiltersWrapperProps } from "../types";
 
 const FiltersWrapper = React.forwardRef<HTMLDivElement, FiltersWrapperProps>(
-  ({ showActions = true, className, scrollShadowClassName }, ref) => {
+  ({ className }, ref) => {
     return (
       <div
         ref={ref}
