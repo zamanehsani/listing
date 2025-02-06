@@ -1,13 +1,20 @@
 "use client";
 
 import type { SliderProps } from "@heroui/react";
-import type { RangeFilter, RangeValue } from "./filters-types";
+// import type { RangeFilter, RangeValue } from "./filters-types";
 
 import React from "react";
 import { Divider, Input, Slider } from "@heroui/react";
 import { cn } from "@heroui/react";
 
 export type PriceSliderAnimation = "opacity" | "height";
+export type RangeValue = [number, number];
+export type RangeFilter = {
+  min: number;
+  max: number;
+  step: number;
+  defaultValue: RangeValue;
+};
 
 export type PriceSliderProps = Omit<SliderProps, "ref"> & {
   range?: RangeFilter;
@@ -42,7 +49,11 @@ const PriceSliderPip: React.FC<PriceSliderPipProps> = ({
   animation = "height",
   isInRange,
 }) => {
-  const rand = React.useMemo(() => Math.floor(Math.random() * 100), []);
+  const [rand, setRand] = React.useState(0);
+
+  React.useEffect(() => {
+    setRand(Math.floor(Math.random() * 100));
+  }, []);
 
   const height = clampValue(rand, 30, 100) + "%";
 
