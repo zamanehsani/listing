@@ -42,7 +42,7 @@ export default function Home() {
                   Filters
                 </Button>
                 <div className="hidden items-center gap-1 md:flex">
-                  <h2 className="text-medium font-medium">Nest</h2>
+                  <h2 className="text-medium font-medium">Result</h2>
                   <span className="text-small text-default-400">(1250)</span>
                 </div>
               </div>
@@ -59,8 +59,8 @@ export default function Home() {
                 labelPlacement="outside-left"
                 placeholder="Select an option"
                 variant="bordered">
-                <SelectItem key="newest" value="newest">
-                  Newest
+                <SelectItem key="recent" value="recent">
+                  Most Recent
                 </SelectItem>
                 <SelectItem key="price_low_to_high" value="price_low_to_high">
                   Price: Low to High
@@ -68,11 +68,8 @@ export default function Home() {
                 <SelectItem key="price_high_to_low" value="price_high_to_low">
                   Price: High to Low
                 </SelectItem>
-                <SelectItem key="top_rated" value="top_rated">
-                  Top Rated
-                </SelectItem>
-                <SelectItem key="most_popular" value="most_popular">
-                  Most Popular
+                <SelectItem key="by_name" value="by_name">
+                  By Name (alphabat)
                 </SelectItem>
               </Select>
             </div>

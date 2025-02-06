@@ -3,7 +3,7 @@
 import React from "react";
 import { Button, Image } from "@heroui/react";
 import { cn } from "@heroui/react";
-import { productType } from "../lists";
+import { productType } from "../types";
 import { Icon } from "@iconify/react";
 
 export type ProductListItemProps = Omit<
@@ -42,13 +42,11 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
           className
         )}
         {...props}>
-        <div className=" flex h-52 max-h-full w-full flex-col items-center justify-center overflow-visible rounded-md bg-content2">
+        <div className="flex h-52 max-h-full w-full flex-col items-center justify-center overflow-hidden rounded-md">
           <Image
             removeWrapper
             alt={address}
-            className={cn(
-              "z-0 h-full max-h-full w-full max-w-[80%] overflow-visible object-contain object-center hover:scale-110"
-            )}
+            className="z-0 h-full max-h-full w-full rounded-md overflow-hidden  object-center hover:scale-105"
             src={image}
           />
         </div>

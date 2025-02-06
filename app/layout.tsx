@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BB.AE",
+  title: "NEST.AE",
   description:
-    "BB.AE is the worlds best product listing platform. It has sortings and filtering features.",
+    "nest.ae is the worlds best listing platform. It has sortings and filtering features.",
 };
 
 export default function RootLayout({

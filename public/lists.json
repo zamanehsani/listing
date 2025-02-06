@@ -1,7 +1,7 @@
 [
   {
     "id": 0,
-    "image": "/products/image1.jpg",
+    "image": "/products/01.jpg",
     "address": "123 Main St, Springfield, IL",
     "size": "1500 sqft",
     "bedrooms": 3,
@@ -11,7 +11,7 @@
   },
   {
     "id": 1,
-    "image": "/products/image2.jpg",
+    "image": "/products/02.jpg",
     "address": "456 Elm St, Springfield, IL",
     "size": "1800 sqft",
     "bedrooms": 4,
@@ -21,7 +21,7 @@
   },
   {
     "id": 2,
-    "image": "/products/image3.jpg",
+    "image": "/products/03.jpg",
     "address": "789 Oak St, Springfield, IL",
     "size": "2000 sqft",
     "bedrooms": 5,
@@ -31,7 +31,7 @@
   },
   {
     "id": 3,
-    "image": "/products/image4.jpg",
+    "image": "/products/04.jpg",
     "address": "101 Pine St, Springfield, IL",
     "size": "1600 sqft",
     "bedrooms": 3,
@@ -41,7 +41,7 @@
   },
   {
     "id": 4,
-    "image": "/products/image5.jpg",
+    "image": "/products/05.jpg",
     "address": "202 Maple St, Springfield, IL",
     "size": "1700 sqft",
     "bedrooms": 4,
@@ -51,7 +51,7 @@
   },
   {
     "id": 5,
-    "image": "/products/image6.jpg",
+    "image": "/products/06.jpg",
     "address": "303 Birch St, Springfield, IL",
     "size": "1900 sqft",
     "bedrooms": 4,
@@ -61,7 +61,7 @@
   },
   {
     "id": 6,
-    "image": "/products/image7.jpg",
+    "image": "/products/07.jpg",
     "address": "404 Cedar St, Springfield, IL",
     "size": "2100 sqft",
     "bedrooms": 5,
@@ -71,7 +71,7 @@
   },
   {
     "id": 7,
-    "image": "/products/image8.jpg",
+    "image": "/products/08.jpg",
     "address": "505 Walnut St, Springfield, IL",
     "size": "2200 sqft",
     "bedrooms": 5,
@@ -81,7 +81,7 @@
   },
   {
     "id": 8,
-    "image": "/products/image9.jpg",
+    "image": "/products/09.jpg",
     "address": "606 Chestnut St, Springfield, IL",
     "size": "2300 sqft",
     "bedrooms": 6,
@@ -91,7 +91,7 @@
   },
   {
     "id": 9,
-    "image": "/products/image10.jpg",
+    "image": "/products/10.jpg",
     "address": "707 Ash St, Springfield, IL",
     "size": "2400 sqft",
     "bedrooms": 6,
@@ -101,7 +101,7 @@
   },
   {
     "id": 10,
-    "image": "/products/image10.jpg",
+    "image": "/products/11.jpg",
     "address": "707 Ash St, Springfield, IL",
     "size": "2400 sqft",
     "bedrooms": 6,
@@ -111,7 +111,7 @@
   },
   {
     "id": 11,
-    "image": "/products/image10.jpg",
+    "image": "/products/01.jpg",
     "address": "707 Ash St, Springfield, IL",
     "size": "2400 sqft",
     "bedrooms": 6,
