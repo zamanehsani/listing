@@ -1,9 +1,9 @@
 "use client";
 import { Select, SelectItem, Button, useDisclosure } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import SidebarDrawer from "./comps/sidebar-drawer";
-import FiltersWrapper from "./comps/filters-wrapper";
-import ProductsGrid from "./comps/products-grid";
+import SidebarDrawer from "./components/sidebar-drawer";
+import FiltersWrapper from "./components/filters-wrapper";
+import ProductsGrid from "./components/products-grid";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
