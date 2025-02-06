@@ -2,6 +2,7 @@
 import { Select, SelectItem, Button, useDisclosure } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import SidebarDrawer from "./comps/sidebar-drawer";
+import FiltersWrapper from "./comps/filters-wrapper";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -13,7 +14,11 @@ export default function Home() {
          */}
 
         <SidebarDrawer isOpen={isOpen} onOpenChange={onOpenChange}>
-          <></>
+          <FiltersWrapper
+            className="bg-default-50"
+            scrollShadowClassName="max-h-full pb-12"
+            showActions={true}
+          />
         </SidebarDrawer>
 
         <div className="w-full flex-1 flex-col">
