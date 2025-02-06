@@ -1,18 +1,48 @@
 "use client";
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { cn } from "@heroui/react";
-
-import { products } from "../lists";
-
 import ProductListItem from "./product-list-item";
-
+import { fetchData } from "../utils";
+import { productType } from "../types";
+import { notFound } from "next/navigation";
+import Skaleton from "./skaleton";
 export type ProductGridProps = React.HTMLAttributes<HTMLDivElement> & {
   itemClassName?: string;
 };
 
 const ProductsGrid = React.forwardRef<HTMLDivElement, ProductGridProps>(
   ({ itemClassName, className, ...props }, ref) => {
+    const [products, setProducts] = useState<productType[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<Error | null>(null);
+
+    useEffect(() => {
+      async function loadData() {
+        try {
+          const jsonData = await fetchData();
+          setProducts(jsonData);
+        } catch (err) {
+          if (err instanceof Error && err.message === "Data not found.") {
+            notFound(); // Trigger Next.js 404 page
+          } else {
+            setError(err instanceof Error ? err : new Error(String(err)));
+          }
+        } finally {
+          setLoading(false);
+        }
+      }
+
+      loadData();
+    }, []);
+
+    if (loading) {
+      return <Skaleton />;
+    }
+
+    if (error) {
+      return <div>Error: {error?.message}</div>;
+    }
+
     return (
       <div
         ref={ref}
@@ -21,14 +51,15 @@ const ProductsGrid = React.forwardRef<HTMLDivElement, ProductGridProps>(
           className
         )}
         {...props}>
-        {products.map((product) => (
-          <ProductListItem
-            key={product.id}
-            removeWrapper
-            {...product}
-            className={cn("w-full snap-start", itemClassName)}
-          />
-        ))}
+        {products &&
+          products.map((product) => (
+            <ProductListItem
+              key={product.id}
+              removeWrapper
+              {...product}
+              className={cn("w-full snap-start", itemClassName)}
+            />
+          ))}
       </div>
     );
   }
