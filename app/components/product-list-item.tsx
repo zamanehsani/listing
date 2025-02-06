@@ -15,7 +15,7 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
       bedrooms,
       currency,
       price,
-      added,
+      date,
       removeWrapper,
       className,
       ...props
@@ -76,7 +76,7 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
                 icon="solar:calendar-date-bold-duotone"
                 width={30}
               />
-              {new Date(added).toLocaleDateString("en-US", {
+              {new Date(date).toLocaleDateString("en-US", {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
@@ -99,7 +99,7 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
               color="primary"
               radius="lg"
               variant="solid">
-              Add to cart
+              View in Detials
             </Button>
           </div>
         </div>

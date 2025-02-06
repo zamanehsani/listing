@@ -4,11 +4,11 @@ export interface productType {
   id: number;
   image: string;
   address: string;
-  size: string;
+  size: number;
   bedrooms: number;
   currency: string;
-  price: string;
-  added: string;
+  price: number;
+  date: string;
 }
 
 export type ProductListItemProps = Omit<
@@ -21,6 +21,7 @@ export type ProductListItemProps = Omit<
 
 export type ProductGridProps = React.HTMLAttributes<HTMLDivElement> & {
   itemClassName?: string;
+  products: productType[];
 };
 
 export type FiltersWrapperProps = React.HTMLAttributes<HTMLDivElement> & {

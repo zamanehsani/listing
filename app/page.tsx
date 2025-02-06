@@ -4,9 +4,71 @@ import { Icon } from "@iconify/react";
 import SidebarDrawer from "./components/sidebar-drawer";
 import FiltersWrapper from "./components/filters-wrapper";
 import ProductsGrid from "./components/products-grid";
+import { notFound } from "next/navigation";
+import Skaleton from "./components/skaleton";
+import { useState, useEffect } from "react";
+import { fetchData } from "./utils";
+import { productType } from "./types";
+import { Suspense } from "react";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [products, setProducts] = useState<productType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+  const [sorting, setSorting] = useState<string | undefined>();
+  const [filters, setFilters] = useState<string | undefined>();
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const jsonData = await fetchData();
+        setProducts(jsonData);
+      } catch (err) {
+        if (err instanceof Error && err.message === "Data not found.") {
+          notFound(); // Trigger Next.js 404 page
+        } else {
+          setError(err instanceof Error ? err : new Error(String(err)));
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  // if (loading) {
+  //   return <Skaleton />;
+  // }
+  if (error) {
+    return <div>Error: {error?.message}</div>;
+  }
+
+  useEffect(() => {
+    if (sorting) {
+      let sortedProducts = [...products];
+      switch (sorting) {
+        case "recent":
+          sortedProducts.sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+          break;
+        case "price_low_to_high":
+          sortedProducts.sort((a, b) => a.price - b.price);
+          break;
+        case "price_high_to_low":
+          sortedProducts.sort((a, b) => b.price - a.price);
+          break;
+        case "by_name":
+          sortedProducts.sort((a, b) => a.address.localeCompare(b.address));
+          break;
+        default:
+          break;
+      }
+      setProducts(sortedProducts);
+    }
+  }, [sorting, filters]);
 
   return (
     <div className="max-w-8xl h-full w-full px-2 lg:px-24">
@@ -46,6 +108,7 @@ export default function Home() {
                 </div>
               </div>
               <Select
+                onSelectionChange={(e) => setSorting(e.currentKey)}
                 aria-label="Sort by"
                 classNames={{
                   base: "items-center justify-end",
@@ -75,7 +138,12 @@ export default function Home() {
           </header>
           <main className="mt-4 h-full w-full overflow-visible px-1">
             <div className="block rounded-medium">
-              <ProductsGrid className="grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" />
+              <Suspense fallback={<Skaleton />}>
+                <ProductsGrid
+                  products={products}
+                  className="grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                />
+              </Suspense>
             </div>
           </main>
         </div>

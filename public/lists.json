@@ -3,120 +3,120 @@
     "id": 0,
     "image": "/products/01.jpg",
     "address": "123 Main St, Springfield, IL",
-    "size": "1500 sqft",
+    "size": 1500,
     "bedrooms": 3,
     "currency": "AED",
-    "price": "250,000",
-    "added": "2023-01-01T10:00:00Z"
+    "price": 250000,
+    "date": "2025-01-01T10:00:00Z"
   },
   {
     "id": 1,
     "image": "/products/02.jpg",
     "address": "456 Elm St, Springfield, IL",
-    "size": "1800 sqft",
+    "size": 1800,
     "bedrooms": 4,
     "currency": "AED",
-    "price": "300,000",
-    "added": "2023-01-02T11:00:00Z"
+    "price": 300000,
+    "date": "2025-01-02T11:00:00Z"
   },
   {
     "id": 2,
     "image": "/products/03.jpg",
     "address": "789 Oak St, Springfield, IL",
-    "size": "2000 sqft",
+    "size": 2000,
     "bedrooms": 5,
     "currency": "AED",
-    "price": "350,000",
-    "added": "2023-01-03T12:00:00Z"
+    "price": 350000,
+    "date": "2025-01-03T12:00:00Z"
   },
   {
     "id": 3,
     "image": "/products/04.jpg",
     "address": "101 Pine St, Springfield, IL",
-    "size": "1600 sqft",
+    "size": 1600,
     "bedrooms": 3,
     "currency": "AED",
-    "price": "275,000",
-    "added": "2023-01-04T13:00:00Z"
+    "price": 275000,
+    "date": "2025-01-04T13:00:00Z"
   },
   {
     "id": 4,
     "image": "/products/05.jpg",
     "address": "202 Maple St, Springfield, IL",
-    "size": "1700 sqft",
+    "size": 1700,
     "bedrooms": 4,
     "currency": "AED",
-    "price": "290,000",
-    "added": "2023-01-05T14:00:00Z"
+    "price": 290000,
+    "date": "2025-01-05T14:00:00Z"
   },
   {
     "id": 5,
     "image": "/products/06.jpg",
     "address": "303 Birch St, Springfield, IL",
-    "size": "1900 sqft",
+    "size": 1900,
     "bedrooms": 4,
     "currency": "AED",
-    "price": "320,000",
-    "added": "2023-01-06T15:00:00Z"
+    "price": 320000,
+    "date": "2025-01-06T15:00:00Z"
   },
   {
     "id": 6,
     "image": "/products/07.jpg",
     "address": "404 Cedar St, Springfield, IL",
-    "size": "2100 sqft",
+    "size": 2100,
     "bedrooms": 5,
     "currency": "AED",
-    "price": "360,000",
-    "added": "2023-01-07T16:00:00Z"
+    "price": 360000,
+    "date": "2025-01-07T16:00:00Z"
   },
   {
     "id": 7,
     "image": "/products/08.jpg",
     "address": "505 Walnut St, Springfield, IL",
-    "size": "2200 sqft",
+    "size": 2200,
     "bedrooms": 5,
-    "price": "380,000",
     "currency": "AED",
-    "added": "2023-01-08T17:00:00Z"
+    "price": 380000,
+    "date": "2025-01-08T17:00:00Z"
   },
   {
     "id": 8,
     "image": "/products/09.jpg",
     "address": "606 Chestnut St, Springfield, IL",
-    "size": "2300 sqft",
+    "size": 2300,
     "bedrooms": 6,
     "currency": "AED",
-    "price": "400,000",
-    "added": "2023-01-09T18:00:00Z"
+    "price": 400000,
+    "date": "2025-01-09T18:00:00Z"
   },
   {
     "id": 9,
     "image": "/products/10.jpg",
     "address": "707 Ash St, Springfield, IL",
-    "size": "2400 sqft",
+    "size": 2400,
     "bedrooms": 6,
     "currency": "AED",
-    "price": "20,000",
-    "added": "2023-01-10T19:00:00Z"
+    "price": 20000,
+    "date": "2025-01-10T19:00:00Z"
   },
   {
     "id": 10,
     "image": "/products/11.jpg",
     "address": "707 Ash St, Springfield, IL",
-    "size": "2400 sqft",
+    "size": 2400,
     "bedrooms": 6,
     "currency": "AED",
-    "price": "20,000",
-    "added": "2023-01-10T19:00:00Z"
+    "price": 20000,
+    "date": "2025-01-15T19:00:00Z"
   },
   {
     "id": 11,
     "image": "/products/01.jpg",
     "address": "707 Ash St, Springfield, IL",
-    "size": "2400 sqft",
+    "size": 2400,
     "bedrooms": 6,
     "currency": "AED",
-    "price": "20,000",
-    "added": "2023-01-10T19:00:00Z"
+    "price": 20000,
+    "date": "2025-01-12T19:00:00Z"
   }
 ]
