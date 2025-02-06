@@ -1,6 +1,7 @@
 "use client";
 import { Select, SelectItem, Button, useDisclosure } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import SidebarDrawer from "./comps/sidebar-drawer";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -11,8 +12,11 @@ export default function Home() {
         {/* add sidebar drower here
          */}
 
+        <SidebarDrawer isOpen={isOpen} onOpenChange={onOpenChange}>
+          <></>
+        </SidebarDrawer>
+
         <div className="w-full flex-1 flex-col">
-          {/* /main content here... */}
           <header className="relative z-20 flex flex-col gap-2 rounded-medium bg-default-100 px-4 pb-3 pt-2 md:pt-3">
             <div className="flex items-center gap-1 md:hidden md:gap-2">
               <h2 className="text-large font-medium">Nest</h2>
