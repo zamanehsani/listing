@@ -29,8 +29,10 @@ const FiltersWrapper = React.forwardRef<HTMLDivElement, FiltersWrapperProps>(
           "h-full max-h-fit w-full max-w-sm rounded-medium bg-content1 p-6",
           className
         )}>
-        <h2 className="text-large font-medium text-foreground">Filter by</h2>
-        <Divider className="my-3 bg-default-300" />
+        <h2 className="text-large font-medium text-foreground">
+          Filter by price
+        </h2>
+        <Divider className="my-3 bg-default-100" />
 
         <ScrollShadow
           className={cn(
@@ -44,12 +46,14 @@ const FiltersWrapper = React.forwardRef<HTMLDivElement, FiltersWrapperProps>(
             <PriceSlider
               aria-label={"Price Range"}
               range={{
-                min: 500,
+                min: 0,
                 defaultValue: [550, 5000],
-                max: 10000,
+                max: 5000,
                 step: 1,
               }}
             />
+
+            <Divider className="my-3 bg-default-200" />
 
             <Accordion className="px-0" defaultExpandedKeys={["1"]}>
               <AccordionItem
@@ -59,7 +63,7 @@ const FiltersWrapper = React.forwardRef<HTMLDivElement, FiltersWrapperProps>(
                   trigger: "p-0",
                   content: "px-1",
                 }}
-                title={"number of bedroooms"}>
+                title={"Filter by bedrooom"}>
                 <CheckboxGroup aria-label={"number of bed"}>
                   <Checkbox key={1} value={"1"}>
                     {"one bedroom"}
@@ -81,7 +85,7 @@ const FiltersWrapper = React.forwardRef<HTMLDivElement, FiltersWrapperProps>(
 
         <Divider className="my-6 bg-default-200" />
         <div className="mt-auto flex flex-col gap-2">
-          <Button className="text-default-500" variant="flat">
+          <Button className="text-default-500" radius="sm" variant="flat">
             Clear all filters
           </Button>
         </div>

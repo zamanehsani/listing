@@ -177,11 +177,13 @@ const PriceSlider = React.forwardRef<HTMLDivElement, PriceSliderProps>(
             labelPlacement="outside"
             startContent={<p className="text-default-400">$</p>}
             type="number"
+            radius="sm"
             value={`${value[0]}`}
             onValueChange={onMinInputValueChange}
           />
           <Divider className="mx-2 w-2" />
           <Input
+            radius="sm"
             aria-label="Max price"
             labelPlacement="outside"
             startContent={<p className="text-default-400">$</p>}

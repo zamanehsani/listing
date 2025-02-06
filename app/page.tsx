@@ -3,6 +3,7 @@ import { Select, SelectItem, Button, useDisclosure } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import SidebarDrawer from "./comps/sidebar-drawer";
 import FiltersWrapper from "./comps/filters-wrapper";
+import ProductsGrid from "./comps/products-grid";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -10,9 +11,6 @@ export default function Home() {
   return (
     <div className="max-w-8xl h-full w-full px-2 lg:px-24">
       <div className="flex gap-x-6 mt-4">
-        {/* add sidebar drower here
-         */}
-
         <SidebarDrawer isOpen={isOpen} onOpenChange={onOpenChange}>
           <FiltersWrapper
             className="bg-default-50"
@@ -79,7 +77,11 @@ export default function Home() {
               </Select>
             </div>
           </header>
-          {/* header first  and main contain second*/}
+          <main className="mt-4 h-full w-full overflow-visible px-1">
+            <div className="block rounded-medium">
+              <ProductsGrid className="grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3" />
+            </div>
+          </main>
         </div>
       </div>
     </div>
