@@ -34,3 +34,16 @@ Check out the live demo at [https://listing-smoky.vercel.app](https://listing-sm
 
 This of course has room for improvement and there are many ways it can be optimized specially in sorting and filtering.
 I beleive this good enought at this stage.
+
+## Features
+
+### Sorting
+
+- Sort the products by date (recent)
+- Sort by price (High to Low and Low to High)
+- Sort alphabetically (based on address field)
+
+### Filtering
+
+- Filter based on the number of bedrooms (1 to 5 beds)
+- Filter by price range
