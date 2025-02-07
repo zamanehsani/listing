@@ -20,9 +20,17 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Stack
 
-- Next.js v15.1.0
-- NextUI for UI components
+- Next.js v15.1.6
+- Iconify/react v5.2.0
+- Tailwindcss v3.4.1
+- [HeroUI](https://www.heroui.com/) for UI components and theme
+- [Framer motion](https://motion.dev/) which comes with HeroUI as well.
 
 ## Live Demo
 
 Check out the live demo at [https://listing-smoky.vercel.app](https://listing-smoky.vercel.app).
+
+## Note:
+
+This of course has room for improvement and there are many ways it can be optimized specially in sorting and filtering.
+I beleive this good enought at this stage.
