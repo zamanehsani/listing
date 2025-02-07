@@ -96,14 +96,14 @@
     "size": 2400,
     "bedrooms": 1,
     "currency": "AED",
-    "price": 20000,
+    "price": 19000,
     "date": "2025-01-10T19:00:00Z"
   },
   {
     "id": 10,
     "image": "/products/11.jpg",
-    "address": "707 Ash St, Springfield, IL",
-    "size": 2400,
+    "address": "87 main St, downtown, IL",
+    "size": 3100,
     "bedrooms": 2,
     "currency": "AED",
     "price": 20000,
@@ -111,12 +111,12 @@
   },
   {
     "id": 11,
-    "image": "/products/01.jpg",
-    "address": "707 Ash St, Springfield, IL",
-    "size": 2400,
+    "image": "/products/12.jpg",
+    "address": "207 zayed St, Springfield, JLT",
+    "size": 2200,
     "bedrooms": 1,
     "currency": "AED",
-    "price": 20000,
+    "price": 85000,
     "date": "2025-01-12T19:00:00Z"
   }
 ]
