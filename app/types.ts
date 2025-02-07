@@ -27,6 +27,8 @@ export type ProductGridProps = React.HTMLAttributes<HTMLDivElement> & {
 export type FiltersWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
   handleFiltering: (opt: string[]) => void;
   bedFilters?: string[];
+  priceFiltering?: { low: number; high: number };
+  handlepricingfilters?: (low: number, high: number) => void;
 };
 
 export type PriceSliderAnimation = "opacity" | "height";
@@ -40,6 +42,8 @@ export type RangeFilter = {
 
 export type PriceSliderProps = Omit<SliderProps, "ref"> & {
   range?: RangeFilter;
+  handleLPFiltering?: (opt: number) => void;
+  handleHPFiltering?: (opt: number) => void;
   animation?: PriceSliderAnimation;
 };
 

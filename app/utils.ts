@@ -46,6 +46,17 @@ export function formatNumber(num: number) {
   return num.toString(); // Return as is if less than 1000
 }
 
+export function priceRangeFilter(
+  list: productType[],
+  lowPriceFilter: number,
+  highPriceFilter: number
+) {
+  return list.filter(
+    (product) =>
+      product.price >= lowPriceFilter && product.price <= highPriceFilter
+  );
+}
+
 export function filterProducts(list: productType[], filters: string[]) {
   if (filters.length > 0) {
     return list.filter((product) =>

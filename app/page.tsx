@@ -6,7 +6,12 @@ import FiltersWrapper from "./components/filters-wrapper";
 import { notFound } from "next/navigation";
 import Skaleton from "./components/skaleton";
 import { useState, useEffect } from "react";
-import { fetchData, filterProducts, sortProducts } from "./utils";
+import {
+  fetchData,
+  filterProducts,
+  sortProducts,
+  priceRangeFilter,
+} from "./utils";
 import { productType } from "./types";
 import { lazy, Suspense } from "react";
 
@@ -19,12 +24,20 @@ export default function Home() {
   const [error, setError] = useState<Error | null>(null);
   const [sorting, setSorting] = useState<string | undefined>();
   const [filters, setFilters] = useState<string[]>([]);
+  const [lowPriceFilter, setLowPriceFilter] = useState(0);
+  const [highPriceFilter, setHighPriceFilter] = useState(50000);
 
   async function loadData() {
     try {
       const jsonData = await fetchData();
       setProducts(jsonData);
-      const filtered = filterProducts(jsonData, filters);
+      const filteredByPrice = priceRangeFilter(
+        jsonData,
+        lowPriceFilter,
+        highPriceFilter
+      );
+
+      const filtered = filterProducts(filteredByPrice, filters);
       const sorted = sortProducts(filtered, sorting);
       setFilteredAndSorted(sorted);
     } catch (err) {
@@ -52,18 +65,33 @@ export default function Home() {
 
   // Re-apply filters and sorting when filters or sorting change
   useEffect(() => {
-    const filtered = filterProducts(products, filters);
+    const filteredByPrice = priceRangeFilter(
+      products,
+      lowPriceFilter,
+      highPriceFilter
+    );
+
+    const filtered = filterProducts(filteredByPrice, filters);
     const sorted = sortProducts(filtered, sorting);
     setFilteredAndSorted(sorted);
-  }, [filters, sorting, products]);
+  }, [filters, sorting, products, lowPriceFilter, highPriceFilter]);
+
+  const handleLPFiltering = (opt?: number) => {
+    opt && setLowPriceFilter(opt);
+  };
+  const handleHPFiltering = (opt?: number) => {
+    opt && setHighPriceFilter(opt);
+  };
 
   return (
     <div className="max-w-8xl h-full w-full px-2 lg:px-24">
       <div className="flex gap-x-6 mt-4">
         <SidebarDrawer isOpen={isOpen} onOpenChange={onOpenChange}>
           <FiltersWrapper
-            handleFiltering={handleFiltering}
             bedFilters={filters}
+            handleFiltering={handleFiltering}
+            handleLPFiltering={handleLPFiltering}
+            handleHPFiltering={handleHPFiltering}
           />
         </SidebarDrawer>
 

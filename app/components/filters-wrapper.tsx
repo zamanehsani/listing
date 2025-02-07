@@ -6,16 +6,21 @@ import {
   Checkbox,
   CheckboxGroup,
   Divider,
+  lightLayout,
   Spacer,
 } from "@heroui/react";
 import PriceSlider from "./price-slider";
 
 const FiltersWrapper = ({
-  handleFiltering,
+  handleLPFiltering,
+  handleHPFiltering,
   bedFilters,
+  handleFiltering,
 }: {
-  handleFiltering: (opt: string[]) => void;
   bedFilters: string[] | undefined;
+  handleFiltering: (values: string[]) => void;
+  handleLPFiltering: (opt?: number) => void;
+  handleHPFiltering: (opt?: number) => void;
 }) => {
   return (
     <div className="h-full max-h-fit w-full max-w-sm rounded-medium bg-content1 p-6">
@@ -27,10 +32,12 @@ const FiltersWrapper = ({
           aria-label={"Price Range"}
           range={{
             min: 0,
-            defaultValue: [550, 5000],
-            max: 5000,
+            defaultValue: [0, 50000],
+            max: 50000,
             step: 1,
           }}
+          handleLPFiltering={handleLPFiltering}
+          handleHPFiltering={handleHPFiltering}
         />
         <Spacer className="py-4" />
         <h1 className="font-bold text-lg text-foreground">Filter by bedroom</h1>

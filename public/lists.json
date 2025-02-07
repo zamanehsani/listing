@@ -6,7 +6,7 @@
     "size": 1500,
     "bedrooms": 3,
     "currency": "AED",
-    "price": 250000,
+    "price": 25000,
     "date": "2025-01-01T10:00:00Z"
   },
   {
@@ -16,7 +16,7 @@
     "size": 1800,
     "bedrooms": 4,
     "currency": "AED",
-    "price": 300000,
+    "price": 30000,
     "date": "2025-01-02T11:00:00Z"
   },
   {
@@ -26,7 +26,7 @@
     "size": 2000,
     "bedrooms": 3,
     "currency": "AED",
-    "price": 350000,
+    "price": 35000,
     "date": "2025-01-03T12:00:00Z"
   },
   {
@@ -36,7 +36,7 @@
     "size": 1600,
     "bedrooms": 3,
     "currency": "AED",
-    "price": 275000,
+    "price": 27500,
     "date": "2025-01-04T13:00:00Z"
   },
   {
@@ -46,7 +46,7 @@
     "size": 1700,
     "bedrooms": 4,
     "currency": "AED",
-    "price": 290000,
+    "price": 29000,
     "date": "2025-01-05T14:00:00Z"
   },
   {
@@ -56,7 +56,7 @@
     "size": 1900,
     "bedrooms": 4,
     "currency": "AED",
-    "price": 320000,
+    "price": 32000,
     "date": "2025-01-06T15:00:00Z"
   },
   {
@@ -66,7 +66,7 @@
     "size": 2100,
     "bedrooms": 5,
     "currency": "AED",
-    "price": 360000,
+    "price": 36000,
     "date": "2025-01-07T16:00:00Z"
   },
   {
@@ -76,7 +76,7 @@
     "size": 2200,
     "bedrooms": 5,
     "currency": "AED",
-    "price": 380000,
+    "price": 38000,
     "date": "2025-01-08T17:00:00Z"
   },
   {
@@ -86,7 +86,7 @@
     "size": 2300,
     "bedrooms": 2,
     "currency": "AED",
-    "price": 400000,
+    "price": 40000,
     "date": "2025-01-09T18:00:00Z"
   },
   {
@@ -116,7 +116,7 @@
     "size": 2200,
     "bedrooms": 1,
     "currency": "AED",
-    "price": 85000,
+    "price": 15000,
     "date": "2025-01-12T19:00:00Z"
   }
 ]
