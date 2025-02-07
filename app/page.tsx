@@ -3,20 +3,19 @@ import { Select, SelectItem, Button, useDisclosure } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import SidebarDrawer from "./components/sidebar-drawer";
 import FiltersWrapper from "./components/filters-wrapper";
-import ProductsGrid from "./components/products-grid";
 import { notFound } from "next/navigation";
 import Skaleton from "./components/skaleton";
 import { useState, useEffect } from "react";
-import { fetchData } from "./utils";
+import { fetchData, filterProducts, sortProducts } from "./utils";
 import { productType } from "./types";
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
+
+const ProductsGrid = lazy(() => import("./components/products-grid"));
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [products, setProducts] = useState<productType[]>([]);
-  const [sorted, setSorted] = useState<productType[]>([]);
   const [filteredAndSorted, setFilteredAndSorted] = useState<productType[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [sorting, setSorting] = useState<string | undefined>();
   const [filters, setFilters] = useState<string[]>([]);
@@ -25,16 +24,12 @@ export default function Home() {
     try {
       const jsonData = await fetchData();
       setProducts(jsonData);
-      const filtered = filterProducts(jsonData);
-      const sorted = sortProducts(filtered);
+      const filtered = filterProducts(jsonData, filters);
+      const sorted = sortProducts(filtered, sorting);
       setFilteredAndSorted(sorted);
-      setLoading(false);
     } catch (err) {
-      if (err instanceof Error && err.message === "Data not found.") {
-        notFound(); // Trigger Next.js 404 page
-      } else {
-        setError(err instanceof Error ? err : new Error(String(err)));
-      }
+      setError(error);
+      notFound();
     } finally {
     }
   }
@@ -44,51 +39,23 @@ export default function Home() {
   }, []);
 
   if (error) {
-    return <div>Error: {error?.message}</div>;
+    return (
+      <div className="flex items-center justify-center ">
+        Error: {error?.message}
+      </div>
+    );
   }
 
   const handleFiltering = (opt: string[]) => {
     setFilters(opt);
   };
 
-  const filterProducts = (list: productType[]) => {
-    if (filters.length > 0) {
-      return list.filter((product) =>
-        filters.includes(product.bedrooms.toString())
-      );
-    }
-    return list;
-  };
-
-  const sortProducts = (list: productType[]) => {
-    if (!sorting) return list;
-
-    const sorted = [...list]; // Sort the provided list (filtered products)
-    switch (sorting) {
-      case "recent":
-        sorted.sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
-        break;
-      case "price_low_to_high":
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case "price_high_to_low":
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      case "by_name":
-        sorted.sort((a, b) => a.address.localeCompare(b.address));
-        break;
-    }
-    return sorted;
-  };
-
   // Re-apply filters and sorting when filters or sorting change
   useEffect(() => {
-    const filtered = filterProducts(products);
-    const sorted = sortProducts(filtered);
+    const filtered = filterProducts(products, filters);
+    const sorted = sortProducts(filtered, sorting);
     setFilteredAndSorted(sorted);
-  }, [filters, sorting, products]); // Include products in dependencies
+  }, [filters, sorting, products]);
 
   return (
     <div className="max-w-8xl h-full w-full px-2 lg:px-24">
