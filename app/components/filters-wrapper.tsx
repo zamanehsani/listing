@@ -1,13 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Button,
-  Checkbox,
-  CheckboxGroup,
-  Divider,
-  Spacer,
-} from "@heroui/react";
+import { Checkbox, CheckboxGroup, Divider, Spacer } from "@heroui/react";
 import PriceSlider from "./price-slider";
 
 const FiltersWrapper = ({
