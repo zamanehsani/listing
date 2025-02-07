@@ -27,6 +27,31 @@ export default function Home() {
   const [lowPriceFilter, setLowPriceFilter] = useState(0);
   const [highPriceFilter, setHighPriceFilter] = useState(50000);
 
+  // Re-apply filters and sorting when filters or sorting change
+  useEffect(() => {
+    const filteredByPrice = priceRangeFilter(
+      products,
+      lowPriceFilter,
+      highPriceFilter
+    );
+
+    const filtered = filterProducts(filteredByPrice, filters);
+    const sorted = sortProducts(filtered, sorting);
+    setFilteredAndSorted(sorted);
+  }, [filters, sorting, products, lowPriceFilter, highPriceFilter]);
+
+  const handleLPFiltering = (opt?: number) => {
+    if (opt) {
+      setLowPriceFilter(opt);
+    }
+  };
+
+  const handleHPFiltering = (opt?: number) => {
+    if (opt) {
+      setHighPriceFilter(opt);
+    }
+  };
+
   async function loadData() {
     try {
       const jsonData = await fetchData();
@@ -40,7 +65,7 @@ export default function Home() {
       const filtered = filterProducts(filteredByPrice, filters);
       const sorted = sortProducts(filtered, sorting);
       setFilteredAndSorted(sorted);
-    } catch (err) {
+    } catch {
       setError(error);
       notFound();
     } finally {
@@ -61,26 +86,6 @@ export default function Home() {
 
   const handleFiltering = (opt: string[]) => {
     setFilters(opt);
-  };
-
-  // Re-apply filters and sorting when filters or sorting change
-  useEffect(() => {
-    const filteredByPrice = priceRangeFilter(
-      products,
-      lowPriceFilter,
-      highPriceFilter
-    );
-
-    const filtered = filterProducts(filteredByPrice, filters);
-    const sorted = sortProducts(filtered, sorting);
-    setFilteredAndSorted(sorted);
-  }, [filters, sorting, products, lowPriceFilter, highPriceFilter]);
-
-  const handleLPFiltering = (opt?: number) => {
-    opt && setLowPriceFilter(opt);
-  };
-  const handleHPFiltering = (opt?: number) => {
-    opt && setHighPriceFilter(opt);
   };
 
   return (

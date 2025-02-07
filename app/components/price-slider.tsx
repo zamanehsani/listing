@@ -123,7 +123,7 @@ const PriceSlider = ({
     const timeoutId = setTimeout(() => {
       handleLPFiltering?.(value[0]);
       handleHPFiltering?.(value[1]);
-    }, 1000);
+    }, 600);
 
     return () => clearTimeout(timeoutId);
   }, [value]);

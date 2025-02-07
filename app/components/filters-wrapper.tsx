@@ -6,7 +6,6 @@ import {
   Checkbox,
   CheckboxGroup,
   Divider,
-  lightLayout,
   Spacer,
 } from "@heroui/react";
 import PriceSlider from "./price-slider";

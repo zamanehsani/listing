@@ -82,7 +82,7 @@ const SidebarDrawer = React.forwardRef<
           radius="none"
           scrollBehavior="inside"
           style={{
-            // @ts-ignore
+            // @ts-expect-error: CSS variable is not recognized by TypeScript
             "--sidebar-width": `${sidebarWidth}px`,
           }}
           onOpenChange={onOpenChange}>

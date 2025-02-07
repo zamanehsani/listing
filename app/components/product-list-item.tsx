@@ -37,7 +37,7 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
         <div className="flex h-52 max-h-full w-full flex-col items-center justify-center overflow-hidden rounded-md">
           <Image
             removeWrapper
-            alt={address}
+            alt={id + ""}
             className="z-0 h-full max-h-full w-full rounded-md overflow-hidden  object-center hover:scale-105"
             src={image}
           />
