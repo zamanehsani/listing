@@ -25,10 +25,8 @@ export type ProductGridProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export type FiltersWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
-  showTitle?: boolean;
-  showActions?: boolean;
-  className?: string;
-  scrollShadowClassName?: string;
+  handleFiltering: (opt: string[]) => void;
+  bedFilters?: string[];
 };
 
 export type PriceSliderAnimation = "opacity" | "height";

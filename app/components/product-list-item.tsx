@@ -22,6 +22,15 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
     },
     ref
   ) => {
+    const formatNumber = (num: number) => {
+      if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+      } else if (num >= 1000) {
+        return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+      }
+      return num.toString(); // Return as is if less than 1000
+    };
+
     return (
       <div
         ref={ref}
@@ -50,10 +59,10 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
                 icon="solar:bed-bold-duotone"
                 width={25}
               />
-              <span className="px-2">{bedrooms} Bedrooms</span>
+              <span className="px-2">{bedrooms}</span>
             </h1>
             <p className="text-medium font-medium text-default-500">
-              {currency} {price}
+              {currency} {formatNumber(price)}
             </p>
           </div>
 
@@ -89,7 +98,9 @@ const ProductListItem = React.forwardRef<HTMLDivElement, ProductListItemProps>(
                 icon="solar:code-scan-bold"
                 width={25}
               />
-              <span className="px-2">{size}</span>
+              <span className="px-2">
+                {size} m <sup>2</sup>
+              </span>
             </p>
           </div>
           <div className="flex gap-2">

@@ -14,69 +14,89 @@ import { Suspense } from "react";
 export default function Home() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [products, setProducts] = useState<productType[]>([]);
+  const [sorted, setSorted] = useState<productType[]>([]);
+  const [filteredAndSorted, setFilteredAndSorted] = useState<productType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [sorting, setSorting] = useState<string | undefined>();
-  const [filters, setFilters] = useState<string | undefined>();
+  const [filters, setFilters] = useState<string[]>([]);
+
+  async function loadData() {
+    try {
+      const jsonData = await fetchData();
+      setProducts(jsonData);
+      const filtered = filterProducts(jsonData);
+      const sorted = sortProducts(filtered);
+      setFilteredAndSorted(sorted);
+      setLoading(false);
+    } catch (err) {
+      if (err instanceof Error && err.message === "Data not found.") {
+        notFound(); // Trigger Next.js 404 page
+      } else {
+        setError(err instanceof Error ? err : new Error(String(err)));
+      }
+    } finally {
+    }
+  }
 
   useEffect(() => {
-    async function loadData() {
-      try {
-        const jsonData = await fetchData();
-        setProducts(jsonData);
-      } catch (err) {
-        if (err instanceof Error && err.message === "Data not found.") {
-          notFound(); // Trigger Next.js 404 page
-        } else {
-          setError(err instanceof Error ? err : new Error(String(err)));
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
     loadData();
   }, []);
 
-  // if (loading) {
-  //   return <Skaleton />;
-  // }
   if (error) {
     return <div>Error: {error?.message}</div>;
   }
 
-  useEffect(() => {
-    if (sorting) {
-      let sortedProducts = [...products];
-      switch (sorting) {
-        case "recent":
-          sortedProducts.sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          );
-          break;
-        case "price_low_to_high":
-          sortedProducts.sort((a, b) => a.price - b.price);
-          break;
-        case "price_high_to_low":
-          sortedProducts.sort((a, b) => b.price - a.price);
-          break;
-        case "by_name":
-          sortedProducts.sort((a, b) => a.address.localeCompare(b.address));
-          break;
-        default:
-          break;
-      }
-      setProducts(sortedProducts);
+  const handleFiltering = (opt: string[]) => {
+    setFilters(opt);
+  };
+
+  const filterProducts = (list: productType[]) => {
+    if (filters.length > 0) {
+      return list.filter((product) =>
+        filters.includes(product.bedrooms.toString())
+      );
     }
-  }, [sorting, filters]);
+    return list;
+  };
+
+  const sortProducts = (list: productType[]) => {
+    if (!sorting) return list;
+
+    const sorted = [...list]; // Sort the provided list (filtered products)
+    switch (sorting) {
+      case "recent":
+        sorted.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+        break;
+      case "price_low_to_high":
+        sorted.sort((a, b) => a.price - b.price);
+        break;
+      case "price_high_to_low":
+        sorted.sort((a, b) => b.price - a.price);
+        break;
+      case "by_name":
+        sorted.sort((a, b) => a.address.localeCompare(b.address));
+        break;
+    }
+    return sorted;
+  };
+
+  // Re-apply filters and sorting when filters or sorting change
+  useEffect(() => {
+    const filtered = filterProducts(products);
+    const sorted = sortProducts(filtered);
+    setFilteredAndSorted(sorted);
+  }, [filters, sorting, products]); // Include products in dependencies
 
   return (
     <div className="max-w-8xl h-full w-full px-2 lg:px-24">
       <div className="flex gap-x-6 mt-4">
         <SidebarDrawer isOpen={isOpen} onOpenChange={onOpenChange}>
           <FiltersWrapper
-            className="bg-default-50"
-            scrollShadowClassName="max-h-full pb-12"
+            handleFiltering={handleFiltering}
+            bedFilters={filters}
           />
         </SidebarDrawer>
 
@@ -140,7 +160,7 @@ export default function Home() {
             <div className="block rounded-medium">
               <Suspense fallback={<Skaleton />}>
                 <ProductsGrid
-                  products={products}
+                  products={filteredAndSorted}
                   className="grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
                 />
               </Suspense>
