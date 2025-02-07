@@ -26,3 +26,12 @@ export function scaleValue(
   // Applying the scaling factor to the value and adjusting by the minimum of the target range
   return (value - fromMin) * scale + toMin;
 }
+
+export function formatNumber(num: number) {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+  } else if (num >= 1000) {
+    return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+  }
+  return num.toString(); // Return as is if less than 1000
+}
