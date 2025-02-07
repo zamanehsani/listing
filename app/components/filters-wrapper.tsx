@@ -62,13 +62,6 @@ const FiltersWrapper = ({
           </Checkbox>
         </CheckboxGroup>
       </div>
-
-      <Divider className="my-6 bg-default-200" />
-      <div className="mt-auto flex flex-col gap-2">
-        <Button className="text-default-500" radius="sm" variant="flat">
-          Clear all filters
-        </Button>
-      </div>
     </div>
   );
 };
